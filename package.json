@@ -1,0 +1,40 @@
+{
+  "name": "@mgb247/async-context",
+  "version": "1.0.2",
+  "description": "Scoped Context via Async Local Storage",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "rm -rf build && npm build && jest",
+    "coverage": "jest --coverage"
+  },
+  "contributors": [
+    "M. Ghayas Baig"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgb247/async-context.git"
+  },
+  "author": "MGB247",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgb247/async-context.git/issues"
+  },
+  "homepage": "https://github.com/mgb247/async-context.git#readme",
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {}
+}
