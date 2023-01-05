@@ -4,14 +4,14 @@ Lets your async functions have local context, accessible from within any call in
 # Example 1
 Wrap your async functions in the AsyncContext.run function:
 
-```
+```js
 AsyncContext.run(yourAsyncFunction, [], yourGlobalContext);
 ```
 
 # Example 2
 ContextSetter can be used to provide multiple functions that set different contexts:
 
-```
+```js
 const yourSetters = [
   (globalContext) => {
     AsyncContext.set("requestId", uuid())
@@ -26,7 +26,7 @@ AsyncContext.run(yourAsyncFunction, yourSetters, yourGlobalContext);
 # Example 3 (NestJS)
 NestJS Middleware can be used to intercept requests and add context to them which then can be accessed from any subsequent layer:
 
-```
+```js
 
 function contextMiddleware(req: Request, res: Response, next: NextFunction) {
   const yourSetters = [
