@@ -1,6 +1,6 @@
 {
   "name": "@mgb247/async-context",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Scoped Context via Async Local Storage",
   "main": "build/index.js",
   "scripts": {
