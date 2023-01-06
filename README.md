@@ -5,6 +5,15 @@ Lets your async functions have local context, accessible from within any call in
 Wrap your async functions in the AsyncContext.run function:
 
 ```js
+function someInnerFunction() {
+  console.log(AsyncContext.get("myGlobalData"));
+  //{message: "hello"}
+}
+function yourAsyncFunction() {
+  someInnerFunction();
+  AsyncContext.set("myGlobalData", {message: "hello"});
+}
+
 AsyncContext.run(yourAsyncFunction, [], yourData);
 ```
 
@@ -36,7 +45,7 @@ function contextMiddleware(req: Request, res: Response, next: NextFunction) {
     (req) => {
       AsyncContext.set("someOtherGlobalData", {})
     },
-  ]
+  ];
   AsyncContext.run(next, yourSetters, req);
 };
 
@@ -46,6 +55,14 @@ export class AppModule implements NestModule {
       .apply(contextMiddleware)
       .forRoutes({ path: 'example', method: RequestMethod.GET });
   }
+}
+
+//example.controller.ts
+
+@Get('example')
+async getExamples() {
+  console.log(AsyncContext.get("requestId"));
+  //outputs some uuid
 }
 ```
 
