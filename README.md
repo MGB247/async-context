@@ -10,8 +10,8 @@ function someInnerFunction() {
   //{message: "hello"}
 }
 function yourAsyncFunction() {
-  someInnerFunction();
   AsyncContext.set("myGlobalData", {message: "hello"});
+  someInnerFunction();
 }
 
 AsyncContext.run(yourAsyncFunction, [], yourData);
