@@ -9,12 +9,12 @@ export class AsyncContext {
      * @param setters An optional array of ContextSetter. Use these Setters to set global level contexts.
      * @param globalContext An optional global level context which is used by setters.
      */
-    public static run = <T>(callback: () => void, setters: ContextSetter[] = [], globalContext: T = undefined) => {
-        AsyncContext.asyncLocalStorage.run(new Map(), () => {
+    public static run = async<T>(callback: () => Promise<void>, setters: ContextSetter[] = [], globalContext: T = undefined) => {
+        await AsyncContext.asyncLocalStorage.run(new Map(), async () => {
             setters.forEach((set) => {
                 set(globalContext);
             });
-            callback();
+            await callback();
         });
     }
 
